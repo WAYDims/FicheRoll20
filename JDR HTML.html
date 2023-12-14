@@ -1,0 +1,1854 @@
+<div class="container">
+ 
+<div class="theme">
+<h1> Les Mondes d'Egrenor </h1>
+<h1> FICHE DE PERSONNAGE </h1>
+
+</div>
+
+<div class="presentation">
+<h2> Présentation </h2>
+<span class="pres"> Prénom du personnage : </span>
+<input type="text" name="attr_nomDuPerso"/>
+<span class="pres"> Nom : </span>
+<input type="text" name="nom"/>
+<span class="pres"> Race : </span>
+<select name="attr_race" class="toggle">
+  <option value="10">Humain</option>  
+  <option value="11">Sang-mêlé</option>
+  <option value="12">Alfir</option>
+  <option value="13">Dvergfir</option>
+  <option value="14">Litfir</option>
+  <option value="15">Nissfir</option>
+  <option value="16">Skrimfir</option>
+</select>
+<span class="pres"> Points d'expérience : </span>
+<input type="number" class="xptotal" name="attr_xp"/>
+<span class="pres"> Niveau : </span>
+<input type="number" name="attr_niveau" readonly/>
+<span class="pres"> Âge : </span>
+<input type="number" class="age" name="attr_age"/>
+</div>
+
+<div class="combat">
+<h2> Combat </h2>
+<div class="vitesse">
+<h4> Bonus d'Initiative </h4>
+<h4> Initiative !</h4>
+<h4> Bonus de vitesse </h4>
+<h4> Vitesse actuelle</h4>
+<input type="number" name="attr_init" readonly/>
+<button type='roll' value='[[1d100+@{init}&{tracker}]]' name'roll_Initiative'>Initiative</button> 
+<input type="number" name="attr_bonusvit"/>
+<input type="number" name="attr_vit" readonly="readonly"/> 
+</div>
+
+<div class="armes">
+<h3> Armes </h3>
+<div class="armesb">
+<h4> Arme </h4>
+<h4> Bonus  </h4>
+<h4> Poids </h4>
+<h4> Valeur </h4>
+<h4> Munitions </h4>
+<h4> Attaque </h4>
+<h4> ! </h4>
+
+<span hidden> Arme 1 </span>
+<input type="text" name="attr_arme1" placeholder="Nom de l'arme"/>
+<input type="number" class="osef" name="attr_bonusarme1"/>
+<input type="number" class="osef" name="attr_poidsarme1"/>
+<input type="number" class="osef" name="attr_valeurarme1"/>
+<input type="number" class="osef" name="attr_munitions1"/>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} attaque avec @{arme1}}} {{Attaque= [[1d100+@{bonusarme1}+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Bonus de base total=[[@{bonusarme1}]]%}}
+!ammo @{character_id} munitions1 -1 munitions1' name'roll_arme1'>Arme 1</button>
+<button type='roll' value='@{macroarme1}' name'macro_arme1'>Arme 1!</button> 
+ 
+<span hidden> Arme 2 </span>
+<input type="text" name="attr_arme2" placeholder="Nom de l'arme"/>
+<input type="number" class="osef" name="attr_bonusarme2"/>
+<input type="number" class="osef" name="attr_poidsarme2"/>
+<input type="number" class="osef" name="attr_valeurarme2"/>
+<span> / </span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} attaque avec @{arme2}}} {{Attaque= [[1d100+@{bonusarme2}+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Bonus de base total=[[@{bonusarme2}]]%}}' name'roll_arme2'>Arme 2</button> 
+<button type='roll' value='@{macroarme2}' name'macro_arme2'>Arme 2!</button> 
+
+<span hidden> Arme 3 </span>
+<input type="text" name="attr_arme3" placeholder="Nom de l'arme"/>
+<input type="number" class="osef" name="attr_bonusarme3"/>
+<input type="number" class="osef" name="attr_poidsarme3"/>
+<input type="number" class="osef" name="attr_valeurarme3"/>
+<span> / </span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} attaque avec @{arme3}}} {{Attaque= [[1d100+@{bonusarme3}+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Bonus de base total=[[@{bonusarme3}]]%}}' name'roll_arme3'>Arme 3</button> 
+<button type='roll' value='@{macroarme2}' name'macro_arme1'>Arme 3!</button> 
+
+<span hidden> Arme 4 </span>
+<input type="text" name="attr_arme4" placeholder="Nom de l'arme"/>
+<input type="number" class="osef" name="attr_bonusarme4"/>
+<input type="number" class="osef" name="attr_poidsarme4"/>
+<input type="number" class="osef" name="attr_valeurarme4"/>
+<input type="number" class="osef" name="attr_munitions4"/>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} attaque avec @{arme4}}} {{Attaque= [[1d100+@{bonusarme4}+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Bonus de base total=[[@{bonusarme4}]]%}}
+!ammo @{character_id} munitions4 -1 munitions4' name'roll_arme4'>Arme 4</button> 
+
+</div>
+
+</div>
+
+
+
+<div class="endurance">
+<h3> Endurance, blessures et handicaps </h3>
+<div class="enduranceb">
+<input type="number" name="attr_endu"/>
+<span class="gauche"> Endurance actuelle  </span>
+<span class="droite"> Endurance Max  </span>
+<input type="number" name="attr_endumax" readonly="readonly"/>
+
+
+</div>
+
+<div class="blessures">
+<h4> Blessure ou handicap </h4>
+<h4> Effet </h4>
+
+<select name="attr_handi1">
+	<option value="0">Aucune blessure ou handicap</option>
+	<option value="1">Hémorragie légère</option>
+	<option value="2">Hémorragie grave</option>
+	<option value="3">Fatigue</option>
+	<option value="4">Stress</option>
+	<option value="5">Maladie</option>
+	<option value="6">Blessure à la jambe</option>
+	<option value="7">Blessure bras ou main directrice</option>
+	</select>
+
+
+<span name="attr_effet1" class="heffet"> </span>
+
+<select name="attr_handi2">
+	<option value="0">Aucune blessure ou handicap</option>
+	<option value="1">Hémorragie légère</option>
+	<option value="2">Hémorragie grave</option>
+	<option value="3">Fatigue</option>
+	<option value="4">Stress</option>
+	<option value="5">Maladie</option>
+	<option value="6">Blessure à la jambe</option>
+	<option value="7">Blessure bras ou main directrice</option>
+	</select>
+
+<span name="attr_effet2" class="heffet"> </span>
+
+<select name="attr_handi3">
+	<option value="0">Aucune blessure ou handicap</option>
+	<option value="1">Hémorragie légère</option>
+	<option value="2">Hémorragie grave</option>
+	<option value="3">Fatigue</option>
+	<option value="4">Stress</option>
+	<option value="5">Maladie</option>
+	<option value="6">Blessure à la jambe</option>
+	<option value="7">Blessure bras ou main directrice</option>
+	</select>
+
+<span name="attr_effet3" class="heffet"> </span>
+<span class="heffet"> Charge portée </span>
+<span name="attr_chargeeffet" class="heffet" > </span>
+<span name="attr_endbasse" class="heffet"> </span>
+<span name="attr_endeffet" class="heffet"> </span>
+</div>
+
+</div>
+</div>
+
+<div class="passives">
+<div class="majeures">
+<h2> Compétences passives </h2>
+<h3> Majeures </h3>
+<div class="majeuresb">
+<h4> Majeure </h4>
+<h4> Maîtrise </h4>
+<h4> Base </h4>
+<h4> Bonus </h4>
+<h4> Total </h4>
+<h4> Test ! </h4>
+
+<span class="skillname">Force </span> 
+<select name="attr_lvlfor" class="skillmaj">
+  <option value="0" class="lvln" selected>Novice</option>
+  <option value="5" class="lvli">Initié</option>
+  <option value="10" class="lvlc">Confirmé</option>
+  <option value="15" class="lvle">Expert</option>
+  <option value="20" class="lvlm">Maître</option>
+  </select>
+<span name="attr_basefor" class="base" ></span>
+<input type="number" name="attr_bonusfor"/>
+<span name="attr_FOR" class="total" ></span>
+<button type='roll' value='[[1d100+@{FOR}]]' name'roll_TestDeForce'>FOR</button>   
+
+
+<span class="skillname"> Dextérité </span> 
+<select name="attr_lvldex">
+  <option value="0">Novice</option>
+  <option value="5">Initié</option>
+  <option value="10">Confirmé</option>
+  <option value="15">Expert</option>
+   <option value="20">Maître</option>
+</select>
+<span name="attr_basedex" class="base" ></span>
+<input type="number" name="attr_bonusdex"/>
+<span name="attr_DEX" class="total" ></span>
+<button type='roll' value='[[1d100+@{DEX}]]' name'roll_TestDeDextérité'>DEX</button>
+
+
+<span class="skillname"> Intelligence </span>
+<select name="attr_lvlint">
+  <option value="0">Novice</option>
+  <option value="5">Initié</option>
+  <option value="10">Confirmé</option>
+  <option value="15">Expert</option>
+   <option value="20">Maître</option>
+</select>
+<span name="attr_baseint" class="base" ></span>
+<input type="number" name="attr_bonusint"/>
+<span name="attr_INT" class="total" ></span>
+<button type='roll' value='[[1d100+@{INT}]]' name'roll_TestDIntelligence'>INT</button>
+
+
+<span class="skillname"> Charisme </span>
+<select name="attr_lvlcha">
+  <option value="0">Novice</option>
+  <option value="5">Initié</option>
+  <option value="10">Confirmé</option>
+  <option value="15">Expert</option>
+   <option value="20">Maître</option>
+</select>
+<span name="attr_basecha" class="base" ></span>
+<input type="number" name="attr_bonuscha"/>
+<span name="attr_CHA" class="total" ></span>
+<button type='roll' value='[[1d100+@{CHA}]]' name'roll_TestDeCharisme'>CHA</button>
+</div>
+</div>
+
+<h3> Intermédiaires et mineures </h3>
+<div class="passivesb">
+<h4> Nom </h4>
+<h4> I/m </h4>
+<h4> Maîtrise </h4>
+<h4> Base </h4>
+<h4> Maj </h4>
+<h4> Total </h4>
+<h4> Test ! </h4>
+
+<span class="skillname" name="Agilité"> Agilité </span> 
+<span> I </span>
+<select name="attr_lvlagi">
+  <option value="0">Novice</option>
+  <option value="7">Initié</option>
+  <option value="15">Confirmé</option>
+  <option value="22">Expert</option>
+  <option value="30">Maître</option>
+  </select>
+<span name="attr_baseagi" ></span>
+<span> DEX </span>
+<span name="attr_totagi" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} teste son Agilité }} {{Résultat= [[1d100+floor((@{DEX}[Dextérité]+@{baseagi}[Agilité])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{blesjamod}[Blessure à la jambe]+@{endbassemod}[Endurance basse]+@{chargemod}[Charge]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Dextérité : + @{DEX}%
+Agilité : + @{baseagi}%}} {{Bonus de base total=[[@{totagi}]]%}} {{=[x](https://i.pinimg.com/736x/08/93/94/089394154ab5471e486c320fc4f77a3e.jpg)}}' name'roll_TestDAgilite'>Agi</button>  
+
+<span class="skillname"> Athlétisme </span> 
+<span> I </span>
+<select name="attr_lvlath">
+  <option value="0">Novice</option>
+  <option value="7">Initié</option>
+  <option value="15">Confirmé</option>
+  <option value="22">Expert</option>
+  <option value="30">Maître</option>
+  </select>
+<span name="attr_baseath" ></span>
+<span> FOR </span>
+<span name="attr_totath" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} teste son Athlétisme }} {{Résultat= [[1d100+floor((@{FOR}[Force]+@{baseath}[Athlétisme])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{blesjamod}[Blessure à la jambe]+@{endbassemod}[Endurance basse]+@{chargemod}[Charge]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Force : + @{FOR}%
+Athlétisme : + @{baseath}%}} {{Bonus de base total=[[@{totath}]]%}} {{=[x](https://i.pinimg.com/736x/4b/ca/b8/4bcab890285bad9a77fb7c796981c61d.jpg)}}' name'roll_TestDAthletisme'>Ath</button>  
+
+<span class="skillname"> Bluff </span> 
+<span> m </span>
+<select name="attr_lvlblu">
+  <option value="0">Novice</option>
+  <option value="10">Initié</option>
+  <option value="20">Confirmé</option>
+  <option value="30">Expert</option>
+  <option value="40">Maître</option>
+  </select>
+<span name="attr_baseblu" ></span>
+<span> CHA </span>
+<span name="attr_totblu" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} tente un Bluff }} {{Résultat= [[1d100+floor((@{CHA}[Charisme]+@{baseblu}[Bluff])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Charisme : + @{CHA}%
+Bluff : + @{baseblu}%}} {{Bonus de base total=[[@{totblu}]]%}} {{=[x](https://i.pinimg.com/736x/98/45/7e/98457e9a407a133d7d092450d091bfeb.jpg)}}' name'roll_TestDeBluff'>Blu</button> 
+
+<span class="skillname"> Collecte De Renseignements </span> 
+<span> m </span>
+<select name="attr_lvlcol">
+  <option value="0">Novice</option>
+  <option value="10">Initié</option>
+  <option value="20">Confirmé</option>
+  <option value="30">Expert</option>
+  <option value="40">Maître</option>
+  </select>
+<span name="attr_basecol" ></span>
+<span> CHA </span>
+<span name="attr_totcol" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso Collecte des Renseignements }} {{Résultat= [[1d100+floor((@{CHA}[Charisme]+@{basecol}[Collecte de Renseignements])*@{stressmod})[Stress]+@{fatimod}[Fatigue]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Charisme : + @{CHA}%
+Collecte de Renseignements : + @{basecol}%}} {{Bonus de base total=[[@{totcol}]]%}} {{=[x](https://i.pinimg.com/736x/15/c0/8e/15c08eeaacee8d7cec9ea7b8b7992383.jpg)}}' name'roll_TestDeCollecteDeRenseignements'>Col</button> 
+
+<span class="skillname"> Combat en mêlée </span> 
+<span> I </span>
+<select name="attr_lvlcom">
+  <option value="0">Novice</option>
+  <option value="7">Initié</option>
+  <option value="15">Confirmé</option>
+  <option value="22">Expert</option>
+  <option value="30">Maître</option>
+  </select>
+<span name="attr_basecom" ></span>
+<span> FOR </span>
+<span name="attr_totcom" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} Combat en mêlée }} {{Résultat= [[1d100+floor((@{FOR}[Force]+@{basecom}[Combat en mêlée])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{blesbramod}[Blessure au bras]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Force : + @{FOR}%
+Combat en mêlée : + @{basecom}%}} {{Bonus de base total=[[@{totcom}]]%}} {{=[x](https://i.pinimg.com/736x/ac/10/fc/ac10fcf93927b00ce50b782fb1e217a3.jpg)}}' name'roll_TestDeCombatEnMêlée'>Com</button> 
+
+<select name="attr_Connaissances1">
+  <option value="con">Connaissances</option>
+  <option value="Faune et Flore">Faune & Flore</option>
+  <option value="Histoire et Traditions">Histoire & Traditions</option>
+  <option value="Magie">Magie</option>
+  <option value="Médecine">Médecine</option>
+  <option value="Mystères">Mystères</option>
+  </select>
+<span> m </span>
+<select name="attr_lvlcon1">
+  <option value="0">Novice</option>
+  <option value="10">Initié</option>
+  <option value="20">Confirmé</option>
+  <option value="30">Expert</option>
+  <option value="40">Maître</option>
+  </select>
+<span name="attr_basecon1" ></span>
+<span> INT </span>
+<span name="attr_totcon1" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} cherche dans ses Connaissances en @{Connaissances1} }} {{Résultat= [[1d100+floor((@{INT}[Intelligence]+@{basemem}[Mémoire]+@{basecon1}[Connaissances])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Intelligence : + @{INT}%
+Mémoire : + @{basemem}%
+Connaissances @{Connaissances1} : +@{basecon1}%}} {{Bonus de base total=[[@{totcon1}]]%}} {{=[x](https://i.pinimg.com/736x/ba/21/0c/ba210c338d7d7c09e34a72f0aad598ff.jpg)}}' name'roll_TestDeConnaissances1'>Con</button> 
+
+<select name="attr_Connaissances2">
+  <option value="con">Connaissances</option>
+  <option value="Faune et Flore">Faune & Flore</option>
+  <option value="Histoire et Traditions">Histoire & Traditions</option>
+  <option value="Magie">Magie</option>
+  <option value="Médecine">Médecine</option>
+  <option value="Mystères">Mystères</option>
+  </select>
+<span> m </span>
+<select name="attr_lvlcon2">
+  <option value="0">Novice</option>
+  <option value="10">Initié</option>
+  <option value="20">Confirmé</option>
+  <option value="30">Expert</option>
+  <option value="40">Maître</option>
+  </select>
+<span name="attr_basecon2" ></span>
+<span> INT </span>
+<span name="attr_totcon2" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} cherche dans ses Connaissances en @{Connaissances2} }} {{Résultat= [[1d100+floor((@{INT}[Intelligence]+@{basemem}[Mémoire]+@{basecon2}[Connaissances])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Intelligence : + @{INT}%
+Mémoire : + @{basemem}%
+Connaissances @{Connaissances2} : +@{basecon2}%}} {{Bonus de base total=[[@{totcon2}]]%}} {{=[x](https://i.pinimg.com/736x/ba/21/0c/ba210c338d7d7c09e34a72f0aad598ff.jpg)}}' name'roll_TestDeConnaissances2'>Con</button> 
+
+<span class="skillname"> Force brute </span> 
+<span> m </span>
+<select name="attr_lvlbru">
+  <option value="0">Novice</option>
+  <option value="10">Initié</option>
+  <option value="20">Confirmé</option>
+  <option value="30">Expert</option>
+  <option value="40">Maître</option>
+  </select>
+<span name="attr_basebru" ></span>
+<span> FOR </span>
+<span name="attr_totbru" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} mobilise sa Force Brute }} {{Résultat= [[1d100+floor((@{FOR}[Force]+@{basebru}[Force Brute])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{blesbramod}[Blessure au bras]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Force : + @{FOR}%
+Force Brute : + @{basebru}%}} {{Bonus de base total=[[@{totbru}]]%}} {{=[x](https://i.pinimg.com/736x/0c/87/e2/0c87e275b07fa0655eadf9ce41c21c27.jpg)}}' name'roll_TestDeForceBrute'>Bru</button> 
+
+<span class="skillname"> Habileté manuelle </span> 
+<span> m </span>
+<select name="attr_lvlhab">
+  <option value="0">Novice</option>
+  <option value="10">Initié</option>
+  <option value="20">Confirmé</option>
+  <option value="30">Expert</option>
+  <option value="40">Maître</option>
+  </select>
+<span name="attr_basehab" ></span>
+<span> SPE </span>
+<span name="attr_tothab" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} teste son Habileté manuelle }} {{Résultat= [[1d100+floor((@{DEX}[Dextérité]+@{INT}[Intelligence]+@{basehab}[Habileté manuelle])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{blesbramod}[Blessure au bras]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Dextérité : + @{DEX}%
+Intelligence : +@{INT}%
+Habileté manuelle : + @{basehab}%}} {{Bonus de base total=[[@{tothab}]]%}} {{=[x](https://i.pinimg.com/736x/04/2b/5a/042b5aae868fffc6a6150badbacffccb.jpg)}}' name'roll_TestDHabileteManuelle'>Hab</button> 
+
+<span class="skillname"> Intuition </span> 
+<span> m </span>
+<select name="attr_lvlintu">
+  <option value="0">Novice</option>
+  <option value="10">Initié</option>
+  <option value="20">Confirmé</option>
+  <option value="30">Expert</option>
+  <option value="40">Maître</option>
+  </select>
+<span name="attr_baseintu" ></span>
+<span> INT </span>
+<span name="attr_totintu" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} utilise son Intuition }} {{Résultat= [[1d100+floor((@{INT}[Intelligence]+@{baseintu}[Intuition])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Intelligence : + @{INT}%
+Intuition : +@{baseintu}%}} {{Bonus de base total=[[@{totintu}]]%}} {{=[x](https://i.pinimg.com/736x/5d/1c/eb/5d1cebd3bb6190fc6076714066911090.jpg)}}' name'roll_TestDIntuition'>Intu</button> 
+
+<span class="skillname"> Mémoire </span> 
+<span> I </span>
+<select name="attr_lvlmem">
+  <option value="0">Novice</option>
+  <option value="7">Initié</option>
+  <option value="15">Confirmé</option>
+  <option value="22">Expert</option>
+  <option value="30">Maître</option>
+  </select>
+<span name="attr_basemem" ></span>
+<span> INT </span>
+<span name="attr_totmem" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} cherche dans sa Mémoire }} {{Résultat= [[1d100+floor((@{INT}[Intelligence]+@{basemem}[Mémoire])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Intelligence : + @{INT}%
+Mémoire : +@{basemem}%}} {{Bonus de base total=[[@{totmem}]]%}} {{=[x](https://i.pinimg.com/originals/94/f4/b7/94f4b7933342b05ef5f92039d2cf0f79.png)}}' name'roll_TestDeMemoire'>Mem</button> 
+
+<span class="skillname"> Négociation </span> 
+<span> I </span>
+<select name="attr_lvlneg">
+  <option value="0">Novice</option>
+  <option value="7">Initié</option>
+  <option value="15">Confirmé</option>
+  <option value="22">Expert</option>
+  <option value="30">Maître</option>
+  </select>
+<span name="attr_baseneg" ></span>
+<span> CHA </span>
+<span name="attr_totneg" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} tente une Négociation }} {{Résultat= [[1d100+floor((@{CHA}[Charisme]+@{baseneg}[Négociation])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Charisme : + @{CHA}%
+Négociation : + @{baseneg}%}} {{Bonus de base total=[[@{totneg}]]%}} {{=[x](https://i.pinimg.com/736x/57/13/9d/57139d844a5d8b9c81bc7f4dd9e86c1b.jpg)}}' name'roll_TestDeNegociation'>Neg</button> 
+
+<span class="skillname"> Perception </span> 
+<span> I </span>
+<select name="attr_lvlper">
+  <option value="0">Novice</option>
+  <option value="7">Initié</option>
+  <option value="15">Confirmé</option>
+  <option value="22">Expert</option>
+  <option value="30">Maître</option>
+  </select>
+<span name="attr_baseper" ></span>
+<span> INT </span>
+<span name="attr_totper" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} met ses sens en éveil }} {{Résultat= [[1d100+floor((@{INT}[Intelligence]+@{baseper}[Perception])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Intelligence : + @{INT}%
+Perception : +@{baseper}%}} {{Bonus de base total=[[@{totper}]]%}} {{=[x](https://i.pinimg.com/736x/e7/a0/ee/e7a0eea4338585f01aea391c435a94c8.jpg)}}' name'roll_TestDePerception'>Per</button> 
+
+<span class="skillname"> Psychologie </span> 
+<span> m </span>
+<select name="attr_lvlpsy">
+  <option value="0">Novice</option>
+  <option value="10">Initié</option>
+  <option value="20">Confirmé</option>
+  <option value="30">Expert</option>
+  <option value="40">Maître</option>
+  </select>
+<span name="attr_basepsy" ></span>
+<span> INT </span>
+<span name="attr_totpsy" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} fait preuve de Psychologie }} {{Résultat= [[1d100+floor((@{INT}[Intelligence]+@{basepsy}[Psychologie])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Intelligence : + @{INT}%
+Perception : +@{basepsy}%}} {{Bonus de base total=[[@{totpsy}]]%}} {{=[x](https://i.pinimg.com/736x/45/cb/1d/45cb1dfdc8ef2f3436e8e9676034f6c8.jpg)}}' name'roll_TestDePsychologie'>Psy</button> 
+
+<span class="skillname"> Réflexes </span> 
+<span> I </span>
+<select name="attr_lvlref">
+  <option value="0">Novice</option>
+  <option value="7">Initié</option>
+  <option value="15">Confirmé</option>
+  <option value="22">Expert</option>
+  <option value="30">Maître</option>
+  </select>
+<span name="attr_baseref" ></span>
+<span> DEX </span>
+<span name="attr_totref" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} mobilise ses Réflexes }} {{Résultat= [[1d100+floor((@{DEX}[Dextérité]+@{baseref}[Réflexes])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{blesjamod}[Blessure à la jambe]+@{endbassemod}[Endurance basse]+@{chargemod}[Charge]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Dextérité : + @{DEX}%
+Réflexes : + @{baseref}%}} {{Bonus de base total=[[@{totref}]]%}} {{=[x](https://i.pinimg.com/736x/6e/d9/17/6ed9170774bd91e8c13cbea14e697b13.jpg)}}' name'roll_TestDeReflexes'>Ref</button> 
+
+<select name="attr_Représentation">
+  <option value="Représentation">Représentation</option>
+  <option value="Musique">Musique</option>
+  <option value="Danse">Danse</option>
+  <option value="Eloquence">Eloquence</option>
+  </select>
+<span> m </span>
+<select name="attr_lvlrep">
+  <option value="0">Novice</option>
+  <option value="10">Initié</option>
+  <option value="20">Confirmé</option>
+  <option value="30">Expert</option>
+  <option value="40">Maître</option>
+  </select>
+<span name="attr_baserep" ></span>
+<span> CHA </span>
+<span name="attr_totrep" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} montre ses talents en @{Représentation} }} {{Résultat= [[1d100+floor((@{CHA}[Charisme]+@{baserep}[Représentation])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Charisme : + @{CHA}%
+@{Représentation} : + @{baserep}%}} {{Bonus de base total=[[@{totrep}]]%}} {{=[x](https://i.pinimg.com/736x/73/60/f6/7360f621da65a0c443234c5786e834f6.jpg)}}' name'roll_TestDeReprésentation'>Rep</button>
+
+<span class="skillname"> Tir </span> 
+<span> I </span>
+<select name="attr_lvltir">
+  <option value="0">Novice</option>
+  <option value="7">Initié</option>
+  <option value="15">Confirmé</option>
+  <option value="22">Expert</option>
+  <option value="30">Maître</option>
+  </select>
+<span name="attr_basetir" ></span>
+<span> DEX </span>
+<span name="attr_tottir" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} tente un Tir }} {{Résultat= [[1d100+floor((@{DEX}[Dextérité]+@{basetir}[Tir])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{blesbramod}[Blessure au bras]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Dextérité : + @{DEX}%
+Tir : + @{basetir}%}} {{Bonus de base total=[[@{tottir}]]%}} {{=[x](https://i.pinimg.com/736x/ef/d4/88/efd488236dbffabc88d0b196f44ee9a8.jpg)}}' name'roll_TestDeTir'>Tir</button> 
+
+<span class="skillname"> Vigueur </span> 
+<span> m </span>
+<select name="attr_lvlvig">
+  <option value="0">Novice</option>
+  <option value="10">Initié</option>
+  <option value="20">Confirmé</option>
+  <option value="30">Expert</option>
+  <option value="40">Maître</option>
+  </select>
+<span name="attr_basevig" ></span>
+<span> FOR </span>
+<span name="attr_totvig" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} mobilise sa Vigueur }} {{Résultat= [[1d100+floor((@{FOR}[Force]+@{basevig}[Vigueur])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Force : + @{FOR}%
+Vigueur : + @{basevig}%}} {{Bonus de base total=[[@{totvig}]]%}} {{=[x](https://i.pinimg.com/736x/4d/2c/d7/4d2cd7d6ce51ee974e33a9208a36dc22.jpg)}}' name'roll_TestDeVigueur'>Vig</button> 
+
+<span class="skillname"> Volonté </span> 
+<span> m </span>
+<select name="attr_lvlvol">
+  <option value="0">Novice</option>
+  <option value="10">Initié</option>
+  <option value="20">Confirmé</option>
+  <option value="30">Expert</option>
+  <option value="40">Maître</option>
+  </select>
+<span name="attr_basevol" ></span>
+<span> INT </span>
+<span name="attr_totvol" ></span>
+<button type='roll' value='&{template:default} {{name=@{nomDuPerso} fait preuve de Volonté }} {{Résultat= [[1d100+floor((@{INT}[Intelligence]+@{basevol}[Volonté])*@{stressmod}[Stress])+@{fatimod}[Fatigue]+@{endbassemod}[Endurance basse]+?{Bonus supplémentaires au test ?|0}[BONUS EXCEPTIONNELS] -?{Malus au test ?|0}[MALUS]]]}} {{Compétences=Intelligence : + @{INT}%
+Volonté : +@{basevol}%}} {{Bonus de base total=[[@{totvol}]]%}} {{=[x](https://i.pinimg.com/736x/09/8e/89/098e898e020652b7bed24c3ff7e4055b.jpg)}}' name'roll_TestDeVolonté'>Vol</button> 
+
+</div>
+
+<h3> Maîtrises des armes </h3>
+<div class="passivesm">
+<h4> Nom de l'arme </h4>
+<h4> Maîtrise </h4>
+<h4> Base </h4>
+<h4> Bonus </h4>
+<h4> Total </h4>
+
+<input type="text" class="ff15" name="attr_maitrisearme1" placeholder="Nom de l'arme"/>
+<select name="attr_lvlarme1">
+  <option value="0">Novice</option>
+  <option value="5">Initié</option>
+  <option value="10">Confirmé</option>
+  <option value="15">Expert</option>
+  <option value="20">Maître</option>
+  </select>
+<span name="attr_basearme1" ></span>
+<input type="number" name="attr_bonusarme1"/>
+<span name="attr_totarme1" ></span>
+
+<input type="text" class="ff15" name="attr_maitrisearme2" placeholder="Nom de l'arme"/>
+<select name="attr_lvlarme2">
+  <option value="0">Novice</option>
+  <option value="5">Initié</option>
+  <option value="10">Confirmé</option>
+  <option value="15">Expert</option>
+  <option value="20">Maître</option>
+  </select>
+<span name="attr_basearme2" ></span>
+<input type="number" name="attr_bonusarme2"/>
+<span name="attr_totarme2" ></span>
+
+<input type="text" class="ff15" name="attr_maitrisearme3" placeholder="Nom de l'arme"/>
+<select name="attr_lvlarme3">
+  <option value="0">Novice</option>
+  <option value="5">Initié</option>
+  <option value="10">Confirmé</option>
+  <option value="15">Expert</option>
+  <option value="20">Maître</option>
+  </select>
+<span name="attr_basearme3" ></span>
+<input type="number" name="attr_bonusarme3"/>
+<span name="attr_totarme3" ></span>
+
+<input type="text" class="ff15" name="attr_maitrisearme4" placeholder="Nom de l'arme"/>
+<select name="attr_lvlarme4">
+  <option value="0">Novice</option>
+  <option value="5">Initié</option>
+  <option value="10">Confirmé</option>
+  <option value="15">Expert</option>
+  <option value="20">Maître</option>
+  </select>
+<span name="attr_basearme4" ></span>
+<input type="number" name="attr_bonusarme4"/>
+<span name="attr_totarme4" ></span>
+
+</div>
+</div>
+
+<div class="actives">
+<h2 class="titregauche"> Compétences actives </h2>
+<div class="activesb">
+<h4> Illimitée </h4>
+<span> </span>
+<h4> Illimitée  </h4>
+<span> </span>
+<input type="text" name="attr_ill1" class="activecomp" placeholder="Nom de la compétence"/>
+<button type='roll' value='@{macroill1}' name'macro_ill1'> </button> 
+<input type="text" name="attr_ill2" class="activecomp" placeholder="Débloquée au niveau 4 ou 9"/>
+<button type='roll' value='@{macroill2}' name'macro_ill2'></button>
+<h4> Journalière </h4>
+<span> </span>
+<h4> Journalière </h4>
+<span> </span>
+<input type="text" name="attr_jour1" class="activecomp" placeholder="Nom de la compétence"/>
+<button type='roll' value='@{macrojour1}' name'macro_jour1'></button> 
+<input type="text" name="attr_jour4" class="activecomp" placeholder="Débloquée au niveau 3"/>
+<button type='roll' value='@{macrojour4}' name'macro_jour4'></button> 
+<h4> Journalière </h4>
+<span> </span>
+<h4> Journalière </h4>
+<span> </span>
+<input type="text" name="attr_jour2" class="activecomp" placeholder="Nom de la compétence"/>
+<button type='roll' value='@{macrojour2}' name'macro_jour2'></button> 
+<input type="text" name="attr_jour5" class="activecomp" placeholder="Débloquée au niveau 5"/>
+<button type='roll' value='@{macrojour5}' name'macro_jour5'></button> 
+<h4> Journalière </h4>
+<span> </span>
+<h4> Journalière </h4>
+<span> </span>
+<input type="text" name="attr_jour3" class="activecomp" placeholder="Nom de la compétence"/>
+<button type='roll' value='@{macrojour3}' name'macro_jour3'></button> 
+<input type="text" name="attr_jour6" class="activecomp" placeholder="Débloquée au niveau 7"/>
+<button type='roll' value='@{macrojour6}' name'macro_jour6'></button> 
+<h4> Ultime </h4>
+<span> </span>
+<h4> Journalière </h4>
+<span> </span>
+<input type="text" name="attr_ult1" class="activecomp" placeholder="Nom de la compétence"/>
+<button type='roll' value='@{macroult1}' name'macro_ult1'></button>
+<input type="text" name="attr_jour7" class="activecomp" placeholder="Débloquée au niveau 9"/>
+<button type='roll' value='@{macrojour7}' name'macro_jour7'></button>  
+<span> </span>
+<span> </span>
+<h4> Ultime </h4>
+<span> </span>
+<span> </span>
+<span> </span>
+<input type="text" name="attr_ult2" class="activecomp" placeholder="Débloqué au niveau 10" />
+<button type='roll' value='@{macroult2}' name'macro_ult2'></button> 
+
+</div>
+</div>
+
+<div class="defenses">
+<h2 class="titregauche"> Défenses </h2>
+
+<div class="defensestat">
+<h4> Statistiques de défenses </h4>
+<div class="resultdefense">
+<h5> Nom</h5>
+<h5> Score </h5>
+<h5> Description </h5>
+<span class="defstat"> Score de défense  </span>
+<span name="attr_totaldef"> </span>
+<span class="defstat"> Votre score de défense total (armure et réflexes compris). </span>
+<span class="defstat"> Score total d'armure </span>
+<span name="attr_totarmure"> </span>
+<span class="defstat"> Votre bonus d'armure lié à votre équipement.</span>
+<span class="defstat"> Défense de base </span>
+<span name="attr_basedef"> </span>
+<span class="defstat"> Votre score de défense sans équipement.</span>
+<span class="defstat"> Surpris </span>
+<span name="attr_surpridef"> </span>
+<span class="defstat"> Un personnage surpris perd son bonus de réflexes. </span>
+</div>
+</div>
+
+<div class="defensegear">
+<h4> Equipement défensif </h4>
+<div class="menudefense">
+<h5>Nom</h5>
+<h5>Emplacement</h5>
+<h5>SD</h5>
+<h5>Effets </h5>
+<h5>Poids </h5>
+<h5>Valeur </h5>
+<div>
+<fieldset class="repeating_defenses">
+<div class="menudefense">
+<input type="text" name="attr_armor" placeholder="Nom de la pièce d'armure">
+<select name="attr_emplacement">
+<option value="1">Tête</option>
+<option value="2">Cape</option>
+<option value="3">Armure</option>
+<option value="4">Ceinture</option>
+<option value="5">Bras</option>
+<option value="6">Anneau</option>
+<option value="7">Bottes</option>
+</select>
+<input type="number" name="attr_armorscore" class="armorscore" placeholder="score" value="0">
+<input type="text" name="attr_itemeffet" class="itemeffet" placeholder="Description des effets de l'objet">
+<input type="number" name="attr_armorpoids" class="armorscore" placeholder="score" value="0">
+<input type="number" name="attr_armorvaleur" class="armorscore" placeholder="score" value="0">
+</div>
+</fieldset>
+</div>
+</div>
+</div>
+</div>
+
+<div class= "equipement">
+<h2 class="titregauche"> Equipement et Richesses </h2>
+<div class="bourse">
+<h4> Bourse </h4>
+<input type="text" name="attr_bourse" placeholder="Type de bourse" />
+<span> Capacité en nombre de pièces : </span>
+<span name="attr_nbpieces"> </span>
+<span> / </span>
+<input type="number" name="attr_capacité"/>
+</div>
+
+<h4> Monnaies </h4>
+<div class="argent">
+<span> Platine </span>
+<input type="number" name="attr_platine"/>
+<span> Or </span>
+<input type="number" name="attr_or"/>
+<span> Argent </span>
+<input type="number" name="attr_argent"/>
+<span> Cuivre </span>
+<input type="number" name="attr_cuivre"/>
+<span> Poids des pièces (en kg) : </span>
+<span name="attr_poidsor"> </span>
+<div>
+<h5> Total des valeurs</h5>
+<span> Valeur totale des monnaies : </span>
+<span name="attr_totalor"> </span>
+<span> PO   || Valeur totale des biens : </span>
+<span name="attr_totalvaleur"> </span>
+<span> PO </span>
+</div>
+</div>
+
+<h3> Capacité de charge </h3>
+<div class="charge">
+<h4> Capacité de charge </h4>
+<h4> Poids actuel porté </h4>
+<h4> Charge actuelle </h4>
+<span name="attr_capacharge"> </span>
+<span name="attr_totcharge"> </span>
+<span name="attr_chargetype"> </span>
+</div>
+
+<h4> Objets de transport </h4>
+<div class="port">
+<h5> Objet </h5>
+<h5> Nom </h5>
+<h5> E.R. </h5>
+<h5> kg </h5>
+<h5> Capacité </h5>
+<h5> Spécificités </h5>
+<h5> Poids </h5>
+<h5> Valeur </h5>
+<span> Sac à dos </span>
+<input type="text" name="attr_sacados" placeholder="Nom de l'objet"> </input>
+<input type="number" class="port" name="attr_sacrapide"> </input>
+<span name="attr_total_sac"> </span>
+<input type="number" class="port" name="attr_saccapa"> </input>
+<input type="text" class="spe" name="attr_sacspe"placeholder="Spécificités de l'objet"> </input>
+<input type="number" class="port" name="attr_sacpoids"> </input>
+<input type="number" class="port" name="attr_sacvaleur"> </input>
+<span> Ceinture </span>
+<input type="text" name="attr_ceinture" placeholder="Nom de l'objet"> </input>
+<input type="number" class="port" name="attr_ceinrapide"> </input>
+<span name="attr_total_ceinture"> </span>
+<input type="number" class="port" name="attr_ceincapa"> </input>
+<input type="text" class="spe" name="attr_ceinspe" placeholder="Spécificités de l'objet"> </input>
+<input type="number" class="port" name="attr_ceinpoids"> </input>
+<input type="number" class="port" name="attr_ceinvaleur"> </input>
+<span> Sacoche </span>
+<input type="text" name="attr_sacoche" placeholder="Nom de l'objet"> </input>
+<input type="number" class="port" name="attr_sacorapide"> </input>
+<span name="attr_total_sacoche"> </span>
+<input type="number" class="port" name="attr_sacocapa"> </input>
+<input type="text" class="spe" name="attr_sacospe" placeholder="Spécificités de l'objet"> </input>
+<input type="number" class="port" name="attr_sacopoids"> </input>
+<input type="number" class="port" name="attr_sacovaleur"> </input>
+</div>
+
+<h3> Inventaire </h3>
+<div class="menuinventaire">
+<h5> Objet </h5>
+<h5> Emplacement </h5>
+<h5> Description </h5>
+<h5> Quant </h5>
+<h5> PUnit </h5>
+<h5> Valeur </h5>
+
+<div>
+<fieldset class="repeating_inventaire">
+<div class="menuinventaire">
+<input type="text" name="attr_objet" class="nomobjet" placeholder="Nom de l'objet"></input>
+<select name="attr_emplacement">
+<option value="0" selected>?</option>
+<option> Porté </option>
+<option> Ceinture </option>
+<option> Sac </option>
+<option> SacRapide </option>
+<option> Sacoche </option>
+<option> Bandoulière </option>
+<option> Coffre </option>
+<option> Monture </option>
+</select>
+<input type="text" name="attr_descobjet" class="descobjet" placeholder="Description de l'objet et de ses effets"></input>
+<input type="number" class="port" name="attr_quantite"> </input>
+<input type="number" class="port" name="attr_poids"> </input>
+<input type="number" class="port" name="attr_prix"> </input>
+</div>
+</fieldset>
+</div>
+
+
+</div>
+
+<div class="inventaire-totaux">
+      <span class="caché" >Total Porté</span>
+      <input type="number" name="attr_total_porté" class="caché"   value="0">
+      <span class="caché" >Total sur la monture</span>
+      <input type="number" name="attr_total_Monture" class="caché"  value="0">
+      <span class="caché" >Total Coffre </span>
+      <input type="number" name="attr_total_coffre" class="caché"  value="0">
+	  <span class="caché">Total Bandoulière </span>
+      <input type="number" name="attr_total_bandoulière" class="caché"  value="0">
+      <span class="caché" >Total Poids</span>
+      <input type="number" name="attr_total_poids" class="caché"  value="0">
+	  <span class="caché" >Total Sac</span>
+      <input type="number" name="attr_total_sac" class="caché"  value="0">
+	  <span class="caché" >Total Sacoche</span>
+      <input type="number" name="attr_total_sacoche" class="caché"  value="0">
+	  <span class="caché" >Total SacRapide </span>
+      <input type="number" name="attr_total_sacrapide" class="caché"  value="0">
+	  
+      <span class="caché">Poids equipement défensif </span>
+      <input type="number" name="attr_defpoids" class="caché"  value="0">
+	  <span class="caché">Valeur equipement defensif </span>
+      <input type="number" name="attr_defvaleur"  class="caché" value="0">
+	  <span class="caché">Valeur inventaire </span>
+      <input type="number" name="attr_total_prix" class="caché"  value="0">
+  
+   </div>
+
+<div class="mods blessures et handicaps">
+	<span class="caché"> Blessure jambe </span>
+	<input type="number" name="attr_blesjamod" class="caché" value="0">
+	<span class="caché"> Blessure bras </span>
+	<input type="number" name="attr_blesbramod" class="caché" value="0">
+	<span class="caché"> Stress </span>
+	<input type="number" name="attr_stressmod" class="caché" value="1">
+	<span class="caché"> Fatigue </span>
+	<input type="number" name="attr_fatimod" class="caché" value="0">
+	<span class="caché"> Endurance basse </span>
+	<input type="number" name="attr_endbassemod" class="caché" value="0">
+	<span class="caché"> Charge intermédiaire </span>
+	<input type="number" name="attr_chargemod" class="caché" value="0">
+	
+	</div>
+
+
+</div>
+
+<div class="macros">
+<h5> Macro avancée arme 1 </h5>
+<textarea name="attr_macroarme1"> </textarea>
+<h5> Macro avancée arme 2 </h5>
+<textarea name="attr_macroarme2"> </textarea>
+<h5> Macro avancée arme 3 </h5>
+<textarea name="attr_macroarme3"> </textarea>
+
+<h5> Macro compétence illimitée 1 </h5>
+<textarea name="attr_macroill1"> </textarea>
+<h5> Macro compétence journalière 1 </h5>
+<textarea name="attr_macrojour1"> </textarea>
+<h5> Macro compétence journalière 2 </h5>
+<textarea name="attr_macrojour2"> </textarea>
+<h5> Macro compétence journalière 3 </h5>
+<textarea name="attr_macrojour3"> </textarea>
+<h5> Macro compétence Ultime 1 </h5>
+<textarea name="attr_macrojour4"> </textarea>
+
+<h5> Macro compétence illimitée 2 </h5>
+<textarea name="attr_macroill2"> </textarea>
+<h5> Macro compétence journalière 4 </h5>
+<textarea name="attr_macrojour4"> </textarea>
+<h5> Macro compétence journalière 5 </h5>
+<textarea name="attr_macrojour5"> </textarea>
+<h5> Macro compétence journalière 6 </h5>
+<textarea name="attr_macrojour6"> </textarea>
+<h5> Macro compétence journalière 7 </h5>
+<textarea name="attr_macrojour7"> </textarea>
+<h5> Macro compétence Ultime 2 </h5>
+<textarea name="attr_macroult2"> </textarea>
+
+</div>
+
+
+
+<script type="text/worker">
+
+// Automatisation expérience et niveaux
+on("change:xp change:niveau sheet:opened", function() 
+{  
+  getAttrs(["xp", "niveau"], function(values) 
+  {
+  let xp = +values.xp||0;
+  let auto = 0;
+  if (xp<1000)
+  {auto = 1;}
+  else if
+  (xp<3000)
+  {auto = 2;}
+  else if
+  (xp<6000)
+  {auto = 3;}
+  else if
+  (xp<10000)
+  {auto = 4;}
+  else if
+  (xp<15000)
+  {auto = 5;}
+  else if
+  (xp<21000)
+  {auto = 6;}
+  else if
+  (xp<28000)
+  {auto = 7;}
+  else if
+  (xp<36000)
+  {auto = 8;}
+  else if
+  (xp<45000)
+  {auto = 9;}
+  else 
+  {auto = 10;}
+  
+  setAttrs({niveau: auto});
+  });
+  });
+ 
+
+// Calcul des Stats de base : FORCE 
+on("change:lvlfor change:bonusfor change:race sheet:opened", function()
+ {
+ getAttrs(["lvlfor", "race", "basefor", "bonusfor"], function(values)
+ {
+ let lvlfor = +values.lvlfor||0;
+ let racefor= +values.race||0;
+ let bonusfor= +values.bonusfor||0;
+ let racemod=0;
+ if (racefor==16)
+ {racemod=5;}
+ else
+ {racemod=0;}
+let basefor = lvlfor+racemod;
+let FOR = lvlfor+racemod+bonusfor;
+ setAttrs({basefor:basefor, FOR:FOR});
+  });
+  });
+  
+  // Calcul des Stats de base : DEXTÉRITÉ
+  on("change:lvldex change:bonusdex change:race sheet:opened", function()
+ {
+ getAttrs(["lvldex", "race", "basedex", "bonusdex"], function(values)
+ {
+ let lvldex = +values.lvldex||0;
+ let racedex= +values.race||0;
+ let bonusdex=+values.bonusdex||0;
+ let racemod=0;
+ if (racedex==14)
+ {racemod=5;}
+ else
+ {racemod=0;}
+let basedex = lvldex+racemod
+let DEX = lvldex+racemod+bonusdex;
+ setAttrs({basedex:basedex, DEX:DEX});
+  });
+  });
+  
+  // Calcul des Stats de base : INTELLIGENCE
+    on("change:lvlint change:bonusint change:race sheet:opened", function()
+ {
+ getAttrs(["lvlint", "race", "baseint", "bonusint"], function(values)
+ {
+ let lvlint = +values.lvlint||0;
+ let raceint= +values.race||0;
+ let bonusint=+values.bonusint||0;
+ let racemod=0;
+ if (raceint==15)
+ {racemod=5;}
+ else
+ {racemod=0;}
+let baseint = lvlint+racemod;
+let INT = lvlint+racemod+bonusint;
+ setAttrs({baseint:baseint, INT:INT});
+  });
+  });
+  
+  // Calcul des Stats de base : CHARISME
+     on("change:lvlcha change:bonuscha change:race sheet:opened", function()
+ {
+ getAttrs(["lvlcha", "race", "basecha", "bonuscha"], function(values)
+ {
+ let lvlcha = +values.lvlcha||0;
+ let racecha= +values.race||0;
+ let bonuscha=+values.bonuscha||0;
+ let racemod=0;
+ if (racecha==11)
+ {racemod=5;}
+ else
+ {racemod=0;}
+let basecha = lvlcha+racemod;
+let CHA = lvlcha+racemod+bonuscha
+ setAttrs({basecha:basecha, CHA:CHA});
+  });
+  });
+  
+  // Calcul du score d'initative
+	  on("change:INT change:DEX sheet:opened", function()
+ {
+ getAttrs(["INT", "DEX", "init"], function(values)
+ {
+ let actualint = +values.INT||0;
+ let actualdex = +values.DEX||0;
+ let init =actualdex + actualint;
+ 
+ setAttrs({init:init});
+  });
+  });
+  
+ // Calculs des stats d'Agilité
+	on("change:lvlagi change:DEX sheet:opened", function()
+	{
+	getAttrs(["lvlagi", "baseagi", "DEX", "totagi"], function(values)
+	{
+	let lvlagi = +values.lvlagi||0;
+	let baseagi = lvlagi;
+	let dexmod = +values.DEX||0;
+	let totagi = dexmod + baseagi;
+	
+	setAttrs({
+	baseagi:baseagi,
+	totagi:totagi
+	 });
+	 });
+     });
+	 
+ // Calcul des stats d'Athlétisme
+ 	on("change:lvlath change:FOR sheet:opened", function()
+	{
+	getAttrs(["lvlath", "baseath", "FOR", "totath"], function(values)
+	{
+	let lvlath = +values.lvlath||0;
+	let baseath = lvlath;
+	let formod = +values.FOR||0;
+	let totath = formod + baseath;
+	
+	setAttrs({
+	baseath:baseath,
+	totath:totath
+	 });
+	 });
+     });
+	 
+ // Calcul des stats de Bluff
+ 	on("change:lvlblu change:CHA sheet:opened", function()
+	{
+	getAttrs(["lvlblu", "baseblu", "CHA", "totblu"], function(values)
+	{
+	let lvlblu = +values.lvlblu||0;
+	let baseblu = lvlblu;
+	let chamod = +values.CHA||0;
+	let totblu = chamod + baseblu;
+	
+	setAttrs({
+	baseblu:baseblu,
+	totblu:totblu
+	 });
+	 });
+     });
+ // Calcul des stats de Collecte de Renseignements
+ 	on("change:lvlcol change:CHA sheet:opened", function()
+	{
+	getAttrs(["lvlcol", "basecol", "CHA", "totcol"], function(values)
+	{
+	let lvlcol = +values.lvlcol||0;
+	let basecol = lvlcol;
+	let chamod = +values.CHA||0;
+	let totcol = chamod + basecol;
+	
+	setAttrs({
+	basecol:basecol,
+	totcol:totcol
+	 });
+	 });
+     });
+
+ // Calcul des stats de Combat en mêlée
+ 	on("change:lvlcom change:FOR sheet:opened", function()
+	{
+	getAttrs(["lvlcom", "basecom", "FOR", "totcom"], function(values)
+	{
+	let lvlcom = +values.lvlcom||0;
+	let basecom = lvlcom;
+	let formod = +values.FOR||0;
+	let totcom = formod + basecom;
+	
+	setAttrs({
+	basecom:basecom,
+	totcom:totcom
+	 });
+	 });
+     });	
+	 
+ // Calcul des stats de Connaissances 1
+ 	on("change:lvlcon1 change:INT change:basemem sheet:opened", function()
+	{
+	getAttrs(["lvlcon1", "basecon1", "INT", "totcon1", "basemem"], function(values)
+	{
+	let lvlcon1 = +values.lvlcon1||0;
+	let basemem = +values.basemem||0;
+	let basecon1 = lvlcon1;
+	let intmod = +values.INT||0;
+	let totcon1 = intmod + basecon1 +basemem;
+	
+	setAttrs({
+	basecon1:basecon1,
+	totcon1:totcon1
+	 });
+	 });
+     });
+	 
+ // Calcul des stats de Connaissances 2
+ 	on("change:lvlcon2 change:INT change:basemem sheet:opened", function()
+	{
+	getAttrs(["lvlcon2", "basecon2", "INT", "totcon2", "basemem"], function(values)
+	{
+	let lvlcon2 = +values.lvlcon2||0;
+	let basemem = +values.basemem||0;
+	let basecon2 = lvlcon2;
+	let intmod = +values.INT||0;
+	let totcon2 = intmod + basecon2 +basemem;
+	
+	setAttrs({
+	basecon2:basecon2,
+	totcon2:totcon2
+	 });
+	 });
+     });
+	 
+ // Calcul des stats de Force brute
+ 	on("change:lvlbru change:FOR sheet:opened", function()
+	{
+	getAttrs(["lvlbru", "basebru", "FOR", "totbru"], function(values)
+	{
+	let lvlbru = +values.lvlbru||0;
+	let basebru = lvlbru;
+	let formod = +values.FOR||0;
+	let totbru = formod + basebru;
+	
+	setAttrs({
+	basebru:basebru,
+	totbru:totbru
+	 });
+	 });
+     });
+	 
+ // Calcul des stats d'Habileté manuelle
+ on("change:lvlhab change:DEX change:INT sheet:opened", function()
+	{
+	getAttrs(["lvlhab", "basehab", "DEX", "INT", "tothab"], function(values)
+	{
+	let lvlhab = +values.lvlhab||0;
+	let basehab = lvlhab;
+	let intmod = +values.INT||0;
+	let dexmod = +values.DEX||0;
+	let tothab = dexmod + intmod + basehab;
+	
+	setAttrs({
+	basehab:basehab,
+	tothab:tothab
+	 });
+	 });
+     });
+	 
+ // Calcul des stats d'Intuiton
+  on("change:lvlintu change:INT sheet:opened", function()
+	{
+	getAttrs(["lvlintu", "baseintu", "INT", "totintu"], function(values)
+	{
+	let lvlintu = +values.lvlintu||0;
+	let baseintu = lvlintu;
+	let intmod = +values.INT||0;
+	let totintu = intmod + baseintu;
+	
+	setAttrs({
+	baseintu:baseintu,
+	totintu:totintu
+	 });
+	 });
+     });
+	 
+ // Calcul des stats de Mémoire
+  on("change:lvlmem change:INT sheet:opened", function()
+	{
+	getAttrs(["lvlmem", "basemem", "INT", "totmem"], function(values)
+	{
+	let lvlmem = +values.lvlmem||0;
+	let basemem = lvlmem;
+	let intmod = +values.INT||0;
+	let totmem = intmod + basemem;
+	
+	setAttrs({
+	basemem:basemem,
+	totmem:totmem
+	 });
+	 });
+     });
+	 
+ // Calcul des stats de Négociation
+   on("change:lvlneg change:CHA sheet:opened", function()
+	{
+	getAttrs(["lvlneg", "baseneg", "CHA", "totneg"], function(values)
+	{
+	let lvlneg = +values.lvlneg||0;
+	let baseneg = lvlneg;
+	let chamod = +values.CHA||0;
+	let totneg = chamod + baseneg;
+	
+	setAttrs({
+	baseneg:baseneg,
+	totneg:totneg
+	 });
+	 });
+     });
+ 
+ // Calcul des stats de Perception
+   on("change:lvlper change:INT sheet:opened", function()
+	{
+	getAttrs(["lvlper", "baseper", "INT", "totper"], function(values)
+	{
+	let lvlper = +values.lvlper||0;
+	let baseper = lvlper;
+	let intmod = +values.INT||0;
+	let totper = intmod + baseper;
+	
+	setAttrs({
+	baseper:baseper,
+	totper:totper
+	 });
+	 });
+     });
+	 
+ // Calcul des stats de Psychologie
+    on("change:lvlpsy change:INT sheet:opened", function()
+	{
+	getAttrs(["lvlpsy", "basepsy", "INT", "totpsy"], function(values)
+	{
+	let lvlpsy = +values.lvlpsy||0;
+	let basepsy = lvlpsy;
+	let intmod = +values.INT||0;
+	let totpsy = intmod + basepsy;
+	
+	setAttrs({
+	basepsy:basepsy,
+	totpsy:totpsy
+	 });
+	 });
+     });
+	 
+ // Calcul des stats de Réflexes
+  on("change:lvlref change:DEX sheet:opened", function()
+	{
+	getAttrs(["lvlref", "baseref", "DEX", "totref"], function(values)
+	{
+	let lvlref = +values.lvlref||0;
+	let baseref = lvlref;
+	let dexmod = +values.DEX||0;
+	let totref = dexmod + baseref;
+	
+	setAttrs({
+	baseref:baseref,
+	totref:totref
+	 });
+	 });
+     });
+	 
+ // Calcul des stats de Représentation
+  on("change:lvlrep change:CHA sheet:opened", function()
+	{
+	getAttrs(["lvlrep", "baserep", "CHA", "totrep"], function(values)
+	{
+	let lvlrep = +values.lvlrep||0;
+	let baserep = lvlrep;
+	let chamod = +values.CHA||0;
+	let totrep = chamod + baserep;
+	
+	setAttrs({
+	baserep:baserep,
+	totrep:totrep
+	 });
+	 });
+     });
+
+ // Calculs des stats de Tir
+	on("change:lvltir change:DEX sheet:opened", function()
+	{
+	getAttrs(["lvltir", "basetir", "DEX", "tottir"], function(values)
+	{
+	let lvltir = +values.lvltir||0;
+	let basetir = lvltir;
+	let dexmod = +values.DEX||0;
+	let tottir = dexmod + basetir;
+	
+	setAttrs({
+	basetir:basetir,
+	tottir:tottir
+	 });
+	 });
+     });
+	  
+ // Calcul des stats de Vigueur
+ 	on("change:lvlvig change:FOR sheet:opened", function()
+	{
+	getAttrs(["lvlvig", "basevig", "FOR", "totvig"], function(values)
+	{
+	let lvlvig = +values.lvlvig||0;
+	let basevig = lvlvig;
+	let formod = +values.FOR||0;
+	let totvig = formod + basevig;
+	
+	setAttrs({
+	basevig:basevig,
+	totvig:totvig
+	 });
+	 });
+     });
+	 
+ // Calcul des stats de Volonté
+    on("change:lvlvol change:INT sheet:opened", function()
+	{
+	getAttrs(["lvlvol", "basevol", "INT", "totvol"], function(values)
+	{
+	let lvlvol = +values.lvlvol||0;
+	let basevol = lvlvol;
+	let intmod = +values.INT||0;
+	let totvol = intmod + basevol;
+	
+	setAttrs({
+	basevol:basevol,
+	totvol:totvol
+	 });
+	 });
+     });
+
+ // Calcul des stats de Maîtrise Arme 1
+    on("change:lvlarme1 change:bonusarme1 sheet:opened", function()
+	{
+	getAttrs(["lvlarme1", "bonusarme1"], function(values)
+	{
+	const lvlarme1 = +values.lvlarme1||0;
+	let basearme1=lvlarme1
+	const bonusarme1 = +values.bonusarme1||0;
+	let totarme1 = basearme1+bonusarme1;
+	
+	setAttrs({
+	basearme1:basearme1,
+	totarme1:totarme1
+	 });
+	 });
+     });
+
+ // Calcul des stats de Maîtrise Arme 2
+    on("change:lvlarme2 change:bonusarme2 sheet:opened", function()
+	{
+	getAttrs(["lvlarme2", "bonusarme2"], function(values)
+	{
+	const lvlarme2 = +values.lvlarme2||0;
+	let basearme2=lvlarme2
+	const bonusarme2 = +values.bonusarme2||0;
+	let totarme2 = basearme2+bonusarme2;
+	
+	setAttrs({
+	basearme2:basearme2,
+	totarme2:totarme2
+	 });
+	 });
+     });
+
+ // Calcul des stats de Maîtrise Arme 3
+    on("change:lvlarme3 change:bonusarme3 sheet:opened", function()
+	{
+	getAttrs(["lvlarme3", "bonusarme3"], function(values)
+	{
+	const lvlarme3 = +values.lvlarme3||0;
+	let basearme3=lvlarme3
+	const bonusarme3 = +values.bonusarme3||0;
+	let totarme3 = basearme3+bonusarme3;
+	
+	setAttrs({
+	basearme3:basearme3,
+	totarme3:totarme3
+	 });
+	 });
+     });
+
+ // Calcul des stats de Maîtrise Arme 4
+    on("change:lvlarme4 change:bonusarme4 sheet:opened", function()
+	{
+	getAttrs(["lvlarme4", "bonusarme4"], function(values)
+	{
+	const lvlarme4 = +values.lvlarme4||0;
+	let basearme4=lvlarme4
+	const bonusarme4 = +values.bonusarme4||0;
+	let totarme4 = basearme4+bonusarme4;
+	
+	setAttrs({
+	basearme4:basearme4,
+	totarme4:totarme4
+	 });
+	 });
+     });
+	 
+// Calcul de l'endurance Maximum
+	on("change:lvlvig change:race change:niveau sheet:opened", function(values)
+	{
+	getAttrs(["lvlvig", "endumax", "race", "niveau"], function(values)
+	{
+	let basendu = 5;
+	let lvlvig = +values.lvlvig||0;
+	let racemod = +values.race||0;
+	let niveaumod = +values.niveau||0;
+	let racendu
+	let vigendu
+	let niveauendu
+	if (racemod==13)
+	{racendu=1;}
+	else
+	{racendu=0;}
+	
+	if (lvlvig ==40)
+	{vigendu=2;}
+	else if (lvlvig==20)
+	{vigendu=1;}
+	else if (lvlvig==30)
+	{vigendu=1;}
+	else{vigendu=0;}
+	
+	if (niveaumod==10)
+	{niveauendu=4;}
+	else if (niveaumod==9)
+	{niveauendu=3;}
+	else if (niveaumod>5)
+	{niveauendu=2;}
+	else if (niveaumod>2)
+	{niveauendu=1;}
+	else{niveauendu=0;}
+	
+	let endumax =basendu + racendu + vigendu + niveauendu;
+	
+	
+	setAttrs({ endumax:endumax
+	 });
+	 });
+     });
+		
+// Menu effet des blessures
+	on("change:handi1 change:handi2 change:handi3 change:endu change:lvlcharge change:endbasse sheet:opened", function()
+	{
+	getAttrs(["handi1", "handi2", "handi3", "endbasse", "endu", "lvlcharge", "chargeinter", "effet1", "effet2", "effet3", "endeffet", "blesjamod", "blesbramod", "stressmod", "fatimod", "endbassemod"], function(values)
+	{
+	let bles1 = +values.handi1||0;
+	let effet1 =0;
+	let blesjamod=0;
+	let blesbramod =0;
+	let stressmod=1;
+	let fatimod=0;
+	let endbassemod=0;
+	if (bles1 == 1)
+ {effet1="Votre personnage perd un point d'endurance toutes les 10 minutes.";}
+	else if (bles1 == 2)
+ {effet1="Votre personnage perd un point d'endurance toutes les minutes.";}
+	else if (bles1 ==3)
+ {effet1="Tous vos tests reçoivent un malus de 10 %."; fatimod=-10;}
+	else if (bles1 ==4)
+ {effet1="Tous vos bonus liés à vos compétences passives sont divisés par deux."; stressmod=0.5;}
+	else if (bles1 ==5)
+ {effet1="Votre personnage est malade, appliquez les effets de la maladie décrits par le MJ.";} 
+	else if (bles1 ==6)
+ {effet1="Votre vitesse de déplacement est réduite de 3 mètres et vous recevez un malus de 20% sur tout les tests impliquant un déplacement."; blesjamod=-20;}
+	else if (bles1 ==7)
+ {effet1="Votre personnage a un malus de 20% sur tous les tests impliquant l'usage de son bras directeur."; blesbramod=-20;}
+	else if (bles1 ==0)
+ {effet1="Rien à signaler";}
+ else
+ {effet1="";}
+ 
+ 	let bles2 = +values.handi2||0;
+	let effet2
+	if (bles2 == 1)
+ {effet2="Votre personnage perd un point d'endurance toutes les 10 minutes.";}
+	else if (bles2 == 2)
+ {effet2="Votre personnage perd un point d'endurance toutes les minutes.";}
+	else if (bles2 ==3)
+ {effet2="Tous vos tests reçoivent un malus de 10 %."; fatimod=-10;}
+	else if (bles2 ==4)
+ {effet2="Tous vos bonus liés à vos compétences passives sont divisés par deux."; stressmod=0.5;}
+	else if (bles2 ==5)
+ {effet2="Votre personnage est malade, appliquez les effets de la maladie décrits par le MJ.";} 
+	else if (bles2 ==6)
+ {effet2="Votre vitesse de déplacement est réduite de 3 mètres et vous recevez un malus de 20% sur tout les tests impliquant un déplacement."; blesjamod=-20;}
+	else if (bles2 ==7)
+ {effet2="Votre personnage a un malus de 20% sur tous les tests impliquant l'usage de son bras directeur."; blesbramod=-20;}
+	else if (bles2 ==0)
+ {effet2="Rien à signaler";}
+ else
+ {effet2="";}
+ 
+ 	let bles3 = +values.handi3||0;
+	let effet3
+	if (bles3 == 1)
+ {effet3="Votre personnage perd un point d'endurance toutes les 10 minutes.";}
+	else if (bles3 == 2)
+ {effet3="Votre personnage perd un point d'endurance toutes les minutes.";}
+	else if (bles3 ==3)
+ {effet3="Tous vos tests reçoivent un malus de 10 %."; fatimod=-10;}
+	else if (bles3 ==4)
+ {effet3="Tous vos bonus liés à vos compétences passives sont divisés par deux."; stressmod=0.5;}
+	else if (bles3 ==5)
+ {effet3="Votre personnage est malade, appliquez les effets de la maladie décrits par le MJ.";} 
+	else if (bles3 ==6)
+ {effet3="Votre vitesse de déplacement est réduite de 3 mètres et vous recevez un malus de 20% sur tout les tests impliquant un déplacement."; blesjamod=-20;}
+	else if (bles3 ==7)
+ {effet3="Votre personnage a un malus de 20% sur tous les tests impliquant l'usage de son bras directeur."; blesbramod=-20;}
+	else if (bles3 ==0)
+ {effet3="Rien à signaler";}
+	else
+ {effet3="";}
+ 
+	let endutrack = +values.endu||0;
+	let endbasse
+	let endeffet
+	if (endutrack <3)
+	{endbasse="Endurance basse"; 
+	 endeffet= "Quand votre personnage a une endurance inférieure ou égale à 2, tous ses tests subissent un malus de 20% et il ne peut effectuer qu'une seule action par tour."; endbassemod=-20;}
+	 else
+	{endbasse="Endurance normale"; endeffet="Rien à signaler";}
+ 
+ 
+	setAttrs({effet1:effet1, effet2:effet2, effet3:effet3, endbasse:endbasse, endeffet:endeffet, fatimod:fatimod, stressmod:stressmod, blesjamod:blesjamod, blesbramod:blesbramod, endbassemod:endbassemod
+	 });
+	 });
+     });
+ 
+ 
+ // Calcul des scores de Défense
+ 
+on('change:repeating_defenses sheet:opened', () => {
+  getSectionIDs('repeating_defenses', ids => {
+    const armure_score = [];
+    ids.forEach(id => armure_score.push(`repeating_defenses_${id}_armorscore`));
+    getAttrs(armure_score, values => {
+       let totarmure = 0;
+       armure_score.forEach(row => {
+          const armorscore = +values[row] || 0;
+          totarmure += armorscore;
+       }); 
+       setAttrs({
+          totarmure:totarmure
+       });
+    });
+  });
+});
+
+ on("change:totarmure change:basedef change:totref sheet:opened", function()
+ {
+ getAttrs(["totarmure", "basedef", "totref", "totaldef", "surpridef"], function(values)
+ {
+const totref = +values.totref || 0;
+const totarmure = +values.totarmure || 0;
+let totaldef = +values.totaldef || 0;
+let basedef = +values.basedef || 0;
+let surpridef  = +values.surpridef || 0;
+basedef = totref + 50;
+totaldef = basedef + totarmure;
+surpridef = totarmure + 50;
+ setAttrs({
+basedef:basedef, totaldef:totaldef, surpridef:surpridef
+  });
+  });
+  });
+  
+  // Calcul du poids de l'équipement défensif
+
+ on('change:repeating_defenses sheet:opened', () => {
+  getSectionIDs('repeating_defenses', ids => {
+    const def_poids = [];
+    ids.forEach(id => def_poids.push(`repeating_defenses_${id}_armorpoids`));
+    getAttrs(def_poids, values => {
+       let defpoids = 0;
+       def_poids.forEach(row => {
+          const armorpoids = +values[row] || 0;
+          defpoids += armorpoids;
+       }); 
+       setAttrs({
+          defpoids:defpoids
+       });
+    });
+  });
+});
+
+  // Calcul de la valeur de l'équipement défensif
+
+ on('change:repeating_defenses sheet:opened', () => {
+  getSectionIDs('repeating_defenses', ids => {
+    const def_valeur = [];
+    ids.forEach(id => def_valeur.push(`repeating_defenses_${id}_armorvaleur`));
+    getAttrs(def_valeur, values => {
+       let defvaleur = 0;
+       def_valeur.forEach(row => {
+          const armorvaleur = +values[row] || 0;
+          defvaleur += armorvaleur;
+       }); 
+       setAttrs({
+          defvaleur:defvaleur
+       });
+    });
+  });
+});
+ 
+ // Calcul du total d'Or
+ 
+  on("change:platine change:or change:argent change:cuivre sheet:opened", function()
+ {
+ getAttrs(["platine", "or", "argent", "cuivre", "totalor", "poidsor"], function(values)
+ {
+const platine = +values.platine || 0;
+const or = +values.or || 0;
+const argent = +values.argent || 0;
+const cuivre = +values.cuivre || 0;
+let totalor = platine*10+or+argent*0.1+cuivre*0.01
+let poidsor = (platine+or+argent+cuivre)*0.01 
+let nbpieces = platine+or+argent+cuivre
+
+ setAttrs({
+poidsor:poidsor, totalor:totalor, nbpieces:nbpieces 
+  });
+  });
+  });
+  
+  // Automatisation de l'Inventaire
+  
+const section_attribute = (section, id, field) => `repeating_${section}_${id}_${field}`;
+on('change:repeating_inventaire:prix change:repeating_inventaire:poids change:repeating_inventaire:quantite change:repeating_inventaire:emplacement sheet:opened', () => {
+   getSectionIDs('repeating_inventaire', id_inventaire => {
+      const fields = [];
+      id_inventaire.forEach(id => {
+         fields.push(section_attribute('inventaire', id, 'prix'));
+         fields.push(section_attribute('inventaire', id, 'poids'));
+         fields.push(section_attribute('inventaire', id, 'quantite'));
+         fields.push(section_attribute('inventaire', id, 'emplacement'));
+      });
+      getAttrs(fields, values => {
+         const output = {};
+         const stats = ['prix', 'porté', 'sac', 'sacrapide', 'coffre', 'bandoulière', 'sacoche', 'monture', 'ceinture', 'poids'];
+         stats.forEach(stat => output[`total_${stat}`] = 0);
+         id_inventaire.forEach(id => {
+            const poids = +values[section_attribute('inventaire', id, 'poids')] || 0;
+            const quantite = +values[section_attribute('inventaire', id, 'quantite')] || 0;
+            const emplacement = values[section_attribute('inventaire', id, 'emplacement')];
+            output[`total_${emplacement.toLowerCase()}`] += poids * quantite;
+            output.total_prix += (+values[section_attribute('inventaire', id, 'prix')] || 0);
+         });
+         stats.forEach(stat => {
+            if(stat != 'prix' && stat != 'poids') {
+                output.total_poids += output[`total_${stat}`];
+            }
+         });
+         setAttrs(output);
+      });
+   });
+});
+
+
+ // Calcul du total du poids porté
+
+on("change:defpoids change:total_sacrapide change:total_sacoche change:total_sac change:total_bandoulière change:total_porté change:sacopoids change:ceinpoids change:poidsarme1 change:poidsarme2 change:poidsarme3 change:poidsarme4 change:sacpoids sheet:opened", function()
+ {
+ getAttrs(["defpoids", "total_sacrapide", "total_sacoche", "total_sac", "total_bandoulière", "poidsarme1", "poidsarme2", "poidsarme3", "poidsarme4", "total_porté", "sacopoids", "ceinpoids", "sacpoids", "totcharge"], function(values)
+ {
+const defpoids = +values.defpoids || 0;
+const total_sacrapide = +values.total_sacrapide || 0;
+const total_sacoche = +values.total_sacoche || 0;
+const total_sac = +values.total_sac || 0;
+const total_bandoulière = +values.total_bandoulière || 0;
+const total_porté = +values.total_porté || 0;
+const sacopoids = +values.sacopoids || 0;
+const ceinpoids = +values.ceinpoids || 0;
+const sacpoids = +values.sacpoids || 0;
+const poidsarme1 = +values.poidsarme1 || 0;
+const poidsarme2 = +values.poidsarme2 || 0;
+const poidsarme3 = +values.poidsarme3 || 0;
+const poidsarme4 = +values.poidsarme4 || 0;
+
+
+let totcharge = +values.totcharge || 0;
+totcharge = defpoids+total_sacrapide+total_sacoche+total_sac+total_bandoulière+total_porté+sacopoids+ceinpoids+sacpoids+poidsarme1+poidsarme2+poidsarme3+poidsarme4;
+
+ setAttrs({
+totcharge:totcharge
+  });
+  });
+  });
+
+ //	Calcul de la valeur totale des biens
+
+on("change:defvaleur change:total_prix change:sacovaleur change:ceinvaleur change:sacvaleur change:valeurarme1 change:valeurarme2 change:valeurarme3 change:valeurarme4 sheet:opened", function()
+ {
+ getAttrs(["defvaleur", "total_prix", "sacovaleur", "ceinvaleur", "sacvaleur", "valeurarme1", "valeurarme2", "valeurarme3", "valeurarme4", "totalvaleur"], function(values)
+ {
+const defvaleur = +values.defvaleur || 0;
+const total_prix = +values.total_prix || 0;
+const sacovaleur = +values.sacovaleur || 0;
+const ceinvaleur = +values.ceinvaleur || 0;
+const sacvaleur = +values.sacvaleur || 0;
+const valeurarme1 = +values.valeurarme1 || 0;
+const valeurarme2 = +values.valeurarme2 || 0;
+const valeurarme3 = +values.valeurarme3 || 0;
+const valeurarme4 = +values.valeurarme4 || 0;
+
+
+let totalvaleur = +values.totalvaleur || 0;
+totalvaleur = defvaleur+total_prix+sacovaleur+ceinvaleur+sacvaleur+valeurarme1+valeurarme2+valeurarme3+valeurarme4;
+
+ setAttrs({
+totalvaleur:totalvaleur
+  });
+  });
+  });
+  
+ // Calcul de la capacité de Charge
+ on("change:FOR change:lvlbru change:race sheet:opened", function()
+ {
+ getAttrs(["FOR", "lvlbru", "race", "capacharge"], function(values)
+ {
+ const forchar= +values.FOR||0;
+ const bruchar=+values.lvlbru||0;
+ const racechar=+values.race||0;
+ let capacharge=+values.capacharge ||0;
+ let racecharmod
+ 
+ if (racechar ==14)
+ {racecharmod= 16;}
+ else if (racechar==15)
+ {racecharmod= 16;}
+ else
+ {racecharmod=25}
+ 
+ capacharge=racecharmod+forchar+bruchar*0.7
+ 
+ setAttrs({
+ capacharge:capacharge
+ });
+});
+});
+
+ // Calcul du type de charge
+  on("change:totcharge change:capacharge change:chargetype sheet:opened", function()
+ {
+ getAttrs(["totcharge", "capacharge", "chargeinter", "chargeeffet", "chargemod"], function(values)
+ {
+ const totcharge= +values.totcharge||0;
+ const capacharge=+values.capacharge ||0;
+ let chargetype;
+ let chargemod=0;
+ 
+ if (totcharge <=capacharge)
+ {chargetype= "Charge légère";}
+ else if (totcharge<=capacharge*2)
+ {chargetype= "Charge intermédiaire";}
+ else
+ {chargetype="Aucune action possible"}
+ 
+	let chargeeffet;
+	if (chargetype=="Charge intermédiaire")
+	{chargeeffet= "Votre personnage voit sa vitesse de déplacement réduite de 3 mètres et reçois d'importants malus sur les tests impliquant un déplacement.";chargemod=-20;}
+	 else if (chargetype=="Charge légère")
+	{chargeeffet="Rien à signaler";}
+	else {chargeeffet="Votre personnage ne peut plus se déplacer"; chargemod=-100;}
+ 
+ setAttrs({
+ chargetype:chargetype, chargeeffet:chargeeffet, chargemod:chargemod
+ });
+});
+});
+ 
+ // Calcul de la vitesse
+	on("change:bonusvit change:chargemod change:blesjamod change:baseath sheet:opened", function(values)
+	{
+	getAttrs(["bonusvit", "vit", "chargemod", "blesjamod", "baseath"], function(values)
+	{
+	let basevit = 6;
+	const baseath = +values.baseath||0;
+	const chargemod = +values.chargemod||0;
+	const blesjamod = +values.blesjamod||0;
+	let bonusvit =+values.bonusvit||0;
+	let chargevit
+	let blesjavit
+	let athmod
+	if (chargemod==-20)
+	{chargevit=-2;}
+	else
+	{chargevit=0;}
+	
+	if (blesjamod ==-20)
+	{blesjavit=-2;}
+	else
+	{blesjavit=0;}
+	
+	if (baseath==15)
+	{athmod=2;}
+	else if (baseath==22)
+	{athmod=2;}
+	else if (baseath==30)
+	{athmod=4;}
+	else{athmod=0;}
+	
+	let vit =basevit + blesjavit + chargevit + athmod + bonusvit;
+	
+	
+	setAttrs({ vit:vit
+	 });
+	 });
+     });
+ </script>

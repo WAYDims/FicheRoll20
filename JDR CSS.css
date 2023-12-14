@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+/* Mapping de la fiche */
+div.container {
+   display: grid;
+   grid-template-areas: "theme                  theme"
+                        "presentation    presentation"
+                        "combat               actives"
+                        "combat 	         defenses"
+						"passives            defenses"
+						"passives          equipement"
+						"macros                macros";
+	grid-template-columns: 45em 60em;
+	width: 115em;
+    column-gap: 2.5em;
+	border: 1pt solid black;
+	font-family : 'EB Garamond' ;
+}
+div.theme {
+   grid-area: theme;
+   text-align: center;
+}
+.theme.pres {
+	font-weight: bold;
+}
+div.presentation {
+   grid-area: presentation;
+   width: 65em;
+   border-style: solid;
+   border-width: thin;
+   padding: 2em;
+   margin: 1em;
+   border-radius: 10px;
+}
+div.combat{
+   grid-area: combat;
+   border-style: solid;
+   border-width: thin;
+   padding: 2em;
+   margin: 1em;
+   border-radius: 10px;
+}
+
+div.vitesse {
+   grid-area: combat;
+}
+div.armes {
+   grid-area: combat;
+}
+div.activesb{
+   grid-area: actives;
+}
+div.actives {
+   grid-area: actives;
+   border-style: solid;
+   border-width: thin;
+   padding: 2em;
+   margin: 1em;
+   border-radius: 10px;
+}
+
+div.defensestat{
+	grid-area: defenses;
+}
+div.defensegear{
+	grid-area: defenses;
+}
+
+div.defenses {
+   grid-area: defenses;
+   border-style: solid;
+   border-width: thin;
+   padding: 2em;
+   margin: 1em;
+   border-radius: 10px;
+}
+div.majeures {
+   grid-area: majeures;
+}
+div.equipement {
+   grid-area: equipement;
+   border-style: solid;
+   border-width: thin;
+   padding: 2em;
+   margin: 1em;
+   border-radius: 10px;
+}
+div.passives {
+   grid-area: passives;
+   border-style: solid;
+   border-width: thin;
+   padding: 2em;
+   margin: 1em;
+   border-radius: 10px;
+}
+
+div.macros {
+	grid-area: macros;
+}
+div.inventaires-totaux {
+	grid-area: equipement;
+}
+
+.ui-dialog .charsheet button[type=roll]:before  {
+    content: "";
+}
+.ui-dialog .charsheet button[type=roll] {
+    padding: 0;
+    font-size: 1em;
+    margin: 0;
+    height:25px;
+}
+.ui-dialog .charsheet .container input[type="number"] {
+	padding: 0;
+    font-size: 1em;
+    margin: 0;
+    height:25px; ;
+} 
+.ui-dialog .charsheet .container input[type="text"] {
+	padding: 0;
+    font-size: 1em;
+    margin: 0;
+    height:25px; ;
+} 
+option.lvln {
+	color: #9c9c9c;
+}
+
+option.lvli {
+	color: #32803a ;
+}
+option.lvlc {
+	color: #2260d4;
+}
+option.lvle {
+	color: #6a05a8 ;
+}
+option.lvlm {
+	color: #d4a004 ;
+}
+
+.skillmaj[value="0"] { color: #9c9c9c; }
+.skillmaj[value="5"] { color: #32803a; }
+.skillmaj[value="10"] { color: #2260d4; }
+.skillmaj[value="15"] { color: #6a05a8; }
+.skillmaj[value="20"] { color: #d4a004; }
+
+
+/*Présentation */
+
+div.presentation input{
+	width: 7em;
+}
+
+div.presentation select{
+	width: 8em;
+}
+.ui-dialog .charsheet .container input[type="number"].xptotal {
+	width: 5em ;
+} 
+span.pres{
+	font-weight:bold;
+}
+h2, h3 {
+	text-align: center;
+}
+
+label, input, span, p {
+   text-align: center;
+   font-size: 1em;
+}
+/*C'est la formule CORRECTE */
+span.skillname {
+    text-align: left;
+}
+
+/*Mise en page Vitesse */
+
+div.vitesse {
+    display: grid;
+    grid-template-columns: 8em 8em 8em 8em;
+    column-gap: 1em;
+	text-align: center;
+	margin-left: 2em;
+}
+
+/*Grille Armes et attaques */
+div.armesb {
+    display: grid;
+    grid-template-columns: 10em 3em 3em 3em 5em 5em 5em;
+    column-gap: 1em;
+	text-align: center;
+}
+
+div.armesb select{
+	width: 7em;
+}
+div.armesb input {
+	width:10em;
+}
+div.armes{
+	margin-bottom : 2em;
+}
+
+/*Grille blessures et handicaps*/
+div.blessures {
+	display: grid;
+	grid-template-columns: 10em 30em;
+	column-gap: 1em;
+	
+}
+div.blessures select {
+	width:10em;
+}
+span.heffet{
+		width: 30em;
+		text-align: left;
+		margin-bottom: 1em;
+}
+
+div.enduranceb {
+	margin-left: 7.5em;
+	margin-bottom : 1em;
+}
+.enduranceb .gauche,
+.enduranceb .droite {
+    display: inline-block;
+    width: calc(40% - 3.9em);
+    font-weight: bold;
+}
+.gauche {
+    text-align: left;
+}
+.droite {
+    text-align: right;
+}
+
+
+/*Grille Compétences passives majeures */
+div.majeuresb {
+    display: grid;
+    grid-template-columns: 5em 6em 3.5em 3.5em 3.5em 5em;
+    column-gap: 1em;
+	text-align: center;
+	margin-left: 4em;
+	margin-bottom : 2em;
+	margin-top: 1em;
+}
+div.majeuresb select {
+	width:7em;
+}
+
+
+/*Grille Compétences passives intermédiaires et mineures */
+div.passivesb {
+    display: grid;
+    grid-template-columns: 7em 2em 7em 3.5em 2em 3.5em 5em;
+	text-align: center;
+    column-gap: 1em;
+	margin-left: 1em;
+	margin-bottom : 2em;
+	margin-top: 1em;
+}
+div.passivesb select {
+	width:7em;
+}
+
+/*Grille Maîtrise des armes */
+div.passivesm {
+	display: grid;
+	grid-template-columns: 12em 7em 3.5em 3.5em 3.5em;
+    column-gap: 1em;
+	text-align: center;
+    column-gap: 1em;
+	margin-left: 2.5em;
+	margin-bottom : 2em;
+	margin-top: 1em;
+}
+
+
+div.passivesm select {
+width:7em;
+}	
+div.passivesm input.ff15 {
+	width: 12em;
+}
+
+/*Grille Compétences actives */
+div.activesb{
+	display:grid;
+	grid-template-columns: 11em 2em 11em 2em;
+	column-gap: 1em;
+}
+
+.ui-dialog .charsheet .container input[type="text"].activecomp{
+	padding: 0;
+    font-size: 1em;
+    margin: 0;
+    height:25px; 
+	width: 11em;
+} 
+
+h2.titregauche {
+	text-align: left;
+}
+
+/*Grille Défenses */
+div.menudefense{
+	display:grid;
+	grid-template-columns: 12em 5em 3em 21em 2.5em 2.5em;
+	column-gap: 1em;
+	text-align: center;
+	margin: 1em;
+}
+div.menudefense input {
+	width: 12em;
+}
+div.menudefense select {
+	width:5em;
+}
+div.menudefense input.itemeffet {
+	width: 21em;
+}
+.ui-dialog .charsheet .container input[type="number"].armorscore {
+	text-align: center ;
+}
+
+div.resultdefense{
+	display:grid;
+	grid-template-columns: 10em 3em 30em;
+	column-gap: 1em;
+	text-align: left;
+	margin: 1em;
+}
+span.defstat{
+	text-align: left;
+}
+
+/*Grilles équipement */
+div.charge{
+display:grid;
+grid-template-columns: 10em 10em 10em;
+column-gap: 1em;
+text-align: left;
+}
+
+div.port{
+display:grid;
+grid-template-columns: 5em 10em 2.5em 2.5em 2.5em 20em 2.5em 2.5em;
+column-gap: 1em;
+text-align: center;
+}
+div.port input {
+	width: 10em;
+}
+div.port input.spe {
+	width: 20em;
+}
+.ui-dialog .charsheet .container input[type="number"].port {
+	width: 2.5em ;
+} 
+div.menuinventaire{
+	display:grid;
+	grid-template-columns: 12em 7em 20em 2.5em 2.5em 2.5em;
+	column-gap: 0.5em;
+}
+div.menuinventaire input.nomobjet {
+	width: 12em;
+}
+div.menuinventaire input.descobjet {
+	width: 20em;
+}
+div.menuinventaire select{
+	width: 7em;
+}
+div.inventaire-totaux input.caché {
+	display: none;
+}
+div.inventaire-totaux span.caché {
+	display: none;
+}
+
+/* Macros */
+
+
